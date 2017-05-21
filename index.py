@@ -1,6 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-# Import required Python libraries
 import time
 import RPi.GPIO as GPIO
 
@@ -23,16 +22,15 @@ def getDistance(GPIO_TRIGGER, GPIO_ECHO):
     distance = distance / 2
     return distance
 
-def warning():
-    #distance = str(distance)
+def warning(distance, language):
+    distance = str(distance)
     pygame.mixer.init()
     pygame.mixer.music.set_volume(1.0)
-    pygame.mixer.music.load("sounds/warning400EN.mp3")
+    pygame.mixer.music.load("sounds/warning" + str(distance) + str(language) + ".mp3")
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() is True:
         continue
     pygame.quit()
-
 
 language = "EN"
 
@@ -52,19 +50,20 @@ GPIO.output(GPIO_TRIGGER, False)
 
 #Allow module to settle
 time.sleep(0.1)
+
 while True:
     distance = getDistance(GPIO_TRIGGER, GPIO_ECHO)
-    print "Distance : %.1f" % distance
+    print("Distance : %.1f" % distance)
     try:
         if distance < 100:
-            print "you should stop"
+            print("you should stop")
             warning(100, language)
         elif distance < 200:
-            print "The obstacle is 2 meters ahead"
+            print("The obstacle is 2 meters ahead")
             warning(200, language)
         elif distance < 400:
-            print "There is an obstacle after 4 meters"
+            print("There is an obstacle after 4 meters")
             warning(400, language)
     except:
-        print "error playing sound"
+        print("error playing sound")
     time.sleep(0.1)
