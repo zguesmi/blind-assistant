@@ -26,7 +26,7 @@ def warning(distance, language):
     distance = str(distance)
     pygame.mixer.init()
     pygame.mixer.music.set_volume(1.0)
-    pygame.mixer.music.load("sounds/warning" + str(distance) + str(language) + ".mp3")
+    pygame.mixer.music.load("resources/sounds/warning" + str(distance) + str(language) + ".mp3")
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() is True:
         continue
