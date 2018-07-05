@@ -1,12 +1,18 @@
-#!/usr/bin/python3
-
 import time
-import RPi.GPIO as GPIO
 import os
 
+import RPi.GPIO as GPIO
+
+class ObstacleDetector(object):
+    """docstring for ObstacleDetector."""
+    def __init__(self, arg):
+        super(ObstacleDetector, self).__init__()
+        self.arg = arg
+
+
 # Get distance between the user and the nearest obstacle
-def getDistance(GPIO_TRIGGER, GPIO_ECHO):
-    #Send 10us pulse to trigger
+def get_distance(GPIO_TRIGGER, GPIO_ECHO):
+    # Send 10us pulse to trigger
     GPIO.output(GPIO_TRIGGER, True)
     time.sleep(0.00001)
     GPIO.output(GPIO_TRIGGER, False)
@@ -15,12 +21,12 @@ def getDistance(GPIO_TRIGGER, GPIO_ECHO):
         start = time.time()
     while GPIO.input(GPIO_ECHO) == 1:
         stop = time.time()
-    #Calculate pulse length
+    # Calculate pulse length
     duration = stop-start
-    #Distance pulse travelled in that time is time
-    #multiplied by the speed of sound (cm/s)
+    # Distance pulse travelled in that time is time
+    # multiplied by the speed of sound (cm/s)
     distance = duration * 34000
-    #That was the distance there and back so halve the value
+    # That was the distance there and back so halve the value
     distance = distance / 2
     return distance
 
@@ -43,8 +49,7 @@ def warn(distance, language):
     except:
         print("=> Error playing sound")
 
-
-def obstacle_detection_mode(GPIO_TRIGGER, GPIO_ECHO, language):
-    distance = getDistance(GPIO_TRIGGER, GPIO_ECHO)
+def main(GPIO_TRIGGER, GPIO_ECHO, language):
+    distance = get_distance(GPIO_TRIGGER, GPIO_ECHO)
     print("Distance : %.1f" % distance)
     warn(distance, language)
