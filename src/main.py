@@ -1,9 +1,20 @@
 import RPi.GPIO as GPIO
 import time
 import os
-from picamera import PiCamera
-from camera_mode import camera_mode
-from obstacle_detection_mode import obstacle_detection_mode
+from image_to_speech import ImageToSpeech
+from obstacle_detector import ObstacleDetector
+
+class Main(object):
+    """docstring for Main."""
+    def __init__(self, arg):
+        super(Main, self).__init__()
+        self.arg = arg
+
+    def setup(arg):
+        logging.basicConfig(filename='/tmp/blind-assistant.log', level=logging.INFO)
+        logging.info('Started')
+        ObstacleDetector.do_something()
+        logging.info('Finished')
 
 
 language = "EN"
@@ -34,7 +45,6 @@ GPIO.add_event_detect(GPIO_MODE_BUTTON, GPIO.BOTH)
 GPIO.add_event_detect(GPIO_CAPTURE_BUTTON, GPIO.FALLING)
 
 os.system("amixer set PCM -- 100%")
-camera = PiCamera()
 
 while True:
     print("====> Obstacle detection mode")
