@@ -1,5 +1,5 @@
 # Blind Assistant
-![logo](./logo.png)
+<!-- ![logo](./logo.png) -->
 
 
 ## Description
