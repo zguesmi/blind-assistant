@@ -19,7 +19,7 @@ This project tries to build an assistant for visually impaired persons using Ras
 
 
 ## Usage
-To use the project first insure you have all dependencies installed then run the main python script.
+To use the project first insure that you have all dependencies installed then run the main python script.
 
     # install dependencies
     $ sudo apt update && sudo apt install -y tesseract-ocr tesseract-ocr-eng python3 python3-pip
