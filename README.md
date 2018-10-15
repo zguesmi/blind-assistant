@@ -51,7 +51,7 @@ Or you can build your own image from dockerfile:
 
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/Zied-Guesmi/blind-assistant/blob/master/LICENSE) file for details.
+This project is licensed under the GPLv2 License - see the [LICENSE](https://github.com/Zied-Guesmi/blind-assistant/blob/master/LICENSE) file for details.
 
 
 ## TODO
