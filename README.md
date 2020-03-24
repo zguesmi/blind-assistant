@@ -1,6 +1,9 @@
 # Blind Assistant
 ![logo](./logo.png)
 
+### TODO:
+https://github.com/facebookresearch/Detectron
+
 
 ## Description
 This project tries to build an assistant for visually impaired persons using Raspberry Pi board along with some sensors (ultrasonic sensors, camera).
